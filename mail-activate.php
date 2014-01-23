@@ -3,7 +3,7 @@
 /**
  * Active mailboxes by send a mail with it
  *
- * @copyright   Copyright 2007-2014, Fwolf
+ * @copyright   Copyright 2007-2014 Fwolf
  * @author      Fwolf <fwolf.aide+gist@gmail.com>
  * @license     http://opensource.org/licenses/mit-license MIT
  * @since       2007-03-30
