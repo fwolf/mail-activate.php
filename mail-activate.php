@@ -1,7 +1,7 @@
 #! /usr/bin/php
 <?php
 /**
- * Active mailboxes by send a mail with it
+ * Active mailboxes by send a mail with themselves
  *
  * @copyright   Copyright 2007-2014 Fwolf
  * @author      Fwolf <fwolf.aide+gist@gmail.com>
