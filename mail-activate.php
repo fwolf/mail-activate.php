@@ -6,7 +6,7 @@
  * @copyright   Copyright 2007-2014, Fwolf
  * @author      Fwolf <fwolf.aide+gist@gmail.com>
  * @since       2007-03-30
- * @version     notReleased
+ * @version     1.0
  */
 
 use Fwlib\Bridge\PHPMailer;
