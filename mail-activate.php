@@ -1,58 +1,57 @@
 #! /usr/bin/php
 <?php
 /**
- * Active all my mailbox by send a boring mail to it self
+ * Active mailboxes by send a mail with it
  *
- * @package     fwolfbin
- * @copyright   Copyright 2007-2008, Fwolf
- * @author      Fwolf <fwolf.aide+fwolfbin@gmail.com>
+ * @copyright   Copyright 2007-2014, Fwolf
+ * @author      Fwolf <fwolf.aide+gist@gmail.com>
  * @since       2007-03-30
- * @version     $Id$
+ * @version     notReleased
  */
 
-define('P2R', dirname(__FILE__) . '/');
-require_once(P2R . 'config.default.php');
+use Fwlib\Bridge\PHPMailer;
+use Fwlib\Config\GlobalConfig;
 
-require_once(FWOLFLIB . 'func/config.php');
-require_once(FWOLFLIB . 'func/env.php');
+require __DIR__ . '/config.default.php';
 
-// Address will active mail send to
-$to = GetCfg('mail_activer.to');
 
-// Mailboxes to active
-// $mail[i]['mail']['name'] is also From address
-$mail = GetCfg('mail_activer.account');
+$globalConfig = GlobalConfig::getInstance();
 
-require_once(FWOLFLIB . 'class/mailsender.php');
-$mailer = new Mailsender;
-//$mailer->SMTPDebug = true;
+$toAddress = $globalConfig->get('mailActivate.to');
+$mailProvider = $globalConfig->get('mailActivate.provider');
 
-//$mailer->SetTo($to);
-foreach ($mail as $host)
-{
-    $mailer->SetHost($host['host'], $host['port']);
-    foreach ($host['mail'] as $account)
-    {
-        // Active also mail to self
-        $mailer->SetTo($to . ';' . $account['name']);
-        $mailer->SetFrom($account['name']);
-        $mailer->SetAuth($account['user'], $account['pass']);
+$mailer = new PHPMailer;
 
-        // Subject
-        $mailer->SetSubject('Msg from ' . $account['name'] . ' .');
+
+foreach ((array)$mailProvider as $provider) {
+    $mailer->setHost($provider['host'], $provider['port']);
+
+    foreach ((array)$provider['account'] as $account) {
+        // Active mail also send to self
+        $mailer->setTo($toAddress . '; ' . $account['name']);
+        $mailer->setFrom($account['name']);
+        $mailer->setAuth($account['user'], $account['pass']);
+        $mailer->setSubject('Activate mail from ' . $account['name']);
 
         // Get random mail body
-        $b = shell_exec('/home/fwolf/.mutt/signature');
-        $b = substr($b, strpos($b, "\n"));
-        $mailer->SetBody($b);
+        $body = shell_exec('/home/fwolf/.mutt/signature');
+        $body = substr($body, strpos($body, "\n"));
+        $body = "$body
 
-        $rs = $mailer->Send();
-        if (false == $rs)
-            echo $mailer->mErrorMsg . "\n";
-        $rs = ($rs) ? 'Successful' : 'Failed';
-        $date = date('Y-m-d H:i:s');
-        echo("[$date] $rs active mail for " . $account['name'] . " !\n");
+Send by mail-activate.php
+https://gist.github.com/fwolf/8555621
+";
+        $mailer->setBody($body);
+
+        $sendSuccess = $mailer->send();
+
+        $sendTime = date('Y-m-d H:i:s');
+        echo "[$sendTime] Send active mail for {$account['name']}, ";
+        echo ($sendSuccess)
+            ? 'Successful.'
+            : 'Failed: ' . $mailer->getErrorMessage();
+        echo "\n";
+
         sleep(3);
     }
 }
-?>
