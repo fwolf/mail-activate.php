@@ -4,6 +4,7 @@
  *
  * @copyright   Copyright 2014, Fwolf
  * @author      Fwolf <fwolf.aide+gist@gmail.com>
+ * @license     http://opensource.org/licenses/mit-license MIT
  * @since       2014-01-22
  */
 
