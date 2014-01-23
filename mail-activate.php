@@ -7,7 +7,7 @@
  * @author      Fwolf <fwolf.aide+gist@gmail.com>
  * @license     http://opensource.org/licenses/mit-license MIT
  * @since       2007-03-30
- * @version     1.0
+ * @version     1.0.2
  */
 
 use Fwlib\Bridge\PHPMailer;
