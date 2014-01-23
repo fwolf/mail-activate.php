@@ -40,7 +40,7 @@ foreach ((array)$mailProvider as $provider) {
         $body = "$body
 
 Send by mail-activate.php
-https://gist.github.com/fwolf/8555621
+https://github.com/fwolf/mail-activate.php
 ";
         $mailer->setBody($body);
 
