@@ -2,10 +2,9 @@
 /**
  * Default configure file
  *
- * @package		bin.private
- * @copyright	Copyright 2014, Fwolf
- * @author		Fwolf <fwolf.aide+gist@gmail.com>
- * @since		2014-01-22
+ * @copyright   Copyright 2014, Fwolf
+ * @author      Fwolf <fwolf.aide+gist@gmail.com>
+ * @since       2014-01-22
  */
 
 
