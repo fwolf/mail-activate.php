@@ -6,7 +6,6 @@
  * @license     http://opensource.org/licenses/mit-license MIT
  */
 
-use Fwlib\Base\ClassLoader;
 use Fwlib\Config\GlobalConfig;
 
 if ('config.default.php' == basename(__FILE__)) {
@@ -76,17 +75,6 @@ if ('config.default.php' == basename(__FILE__)) {
     // Overwrite default config with user config
     $config = array_merge($config, $userConfig);
 
-    // Include autoloader of Fwlib, need before other library
-    require $config['lib.path.fwlib'] . 'autoload.php';
-
     // Deal with config, store in GlobalConfig instance
     GlobalConfig::getInstance()->load($config);
-
-
-    // Register autoload of other external library, $classLoader is declared
-    // in autoload.php of Fwlib, can use below.
-
-
-    // PHPMailer, use its own autoloader
-    require $config['lib.path.phpmailer'] . 'PHPMailerAutoload.php';
 }
