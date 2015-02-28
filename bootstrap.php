@@ -9,6 +9,8 @@
  * @license     http://opensource.org/licenses/MIT MIT
  */
 
+use Fwlib\Config\GlobalConfig;
+
 // Detect root path
 // If used as module, should be in parentRoot/modules/moduleName/ directory.
 $pathToRoot = file_exists(__DIR__ . '/../../config.default.php')
@@ -17,8 +19,17 @@ $pathToRoot = file_exists(__DIR__ . '/../../config.default.php')
 
 
 /** @noinspection PhpIncludeInspection */
-$classLoader = require $pathToRoot . 'vendor/autoload.php';
+{
+    $classLoader = require $pathToRoot . 'vendor/autoload.php';
 
 
-/** @noinspection PhpIncludeInspection */
-require $pathToRoot . 'config.default.php';
+    $defaultConfig = require $pathToRoot . 'config.default.php';
+
+    // Load user config if exists
+    $userConfig = file_exists($pathToRoot . 'config.php')
+        ? (require $pathToRoot . 'config.php')
+        : [];
+}
+
+// Overwrite default config with user config, store in GlobalConfig
+GlobalConfig::getInstance()->load(array_merge($defaultConfig, $userConfig));

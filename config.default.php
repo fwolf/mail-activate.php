@@ -2,33 +2,12 @@
 /**
  * Default configure file
  *
+ * Save a copy as 'config.php' to set user config,  DO NOT remove the last
+ * return statement.
+ *
  * @copyright   Copyright 2014-2015 Fwolf
  * @license     http://opensource.org/licenses/mit-license MIT
  */
-
-use Fwlib\Config\GlobalConfig;
-
-if ('config.default.php' == basename(__FILE__)) {
-    // Init config data array
-    $config = array();
-
-
-    // Load user config if exists
-    if (file_exists($pathToRoot . 'config.php')) {
-        /** @noinspection PhpIncludeInspection */
-        require $pathToRoot . 'config.php';
-    }
-}
-
-
-/***********************************************************
- * Config define area
- *
- * Use $configUser to compute value if needed.
- *
- * In config.php, code outside this area can be removed.
- **********************************************************/
-
 
 $config['lib.path.fwlib'] = 'fwlib/';
 $config['lib.path.phpmailer'] = 'phpmailer/';
@@ -57,16 +36,4 @@ $config["mailActivate.provider.$i.account.$j.pass"] = 'pass1';
 unset($i); unset($j;
 */
 
-
-/***********************************************************
- * Config define area end
- **********************************************************/
-
-
-if ('config.default.php' == basename(__FILE__)) {
-    // Overwrite default config with user config
-    $config = array_merge($config, $userConfig);
-
-    // Deal with config, store in GlobalConfig instance
-    GlobalConfig::getInstance()->load($config);
-}
+return $config;
