@@ -13,7 +13,7 @@ $config['lib.path.fwlib'] = 'fwlib/';
 $config['lib.path.phpmailer'] = 'phpmailer/';
 
 
-// Activer mail destination address
+// Activate mail destination address
 $config['mailActivate.to'] = 'mailActivate_to@domain.com';
 
 /* Config template for each mail account
