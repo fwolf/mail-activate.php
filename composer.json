@@ -1,0 +1,29 @@
+{
+    "name": "fwolf/mail-activate",
+    "description": "Batch activate mailboxes",
+    "type": "project",
+    "keywords": [
+        "mail",
+        "batch",
+        "activate"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Fwolf",
+            "email": "fwolf.aide+mail-activate@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "fwlib/fwlib": "2.*",
+        "fwolf/phpmailer-wrapper": "1.*"
+    },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "http://pkg.phpcomposer.com/repo/packagist/"
+        },
+        {"packagist": false}
+    ]
+}
