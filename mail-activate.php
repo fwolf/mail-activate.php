@@ -3,10 +3,8 @@
 /**
  * Active mailboxes by send a mail with themselves
  *
- * @copyright   Copyright 2007-2014 Fwolf
- * @author      Fwolf <fwolf.aide+gist@gmail.com>
+ * @copyright   Copyright 2007-2015 Fwolf
  * @license     http://opensource.org/licenses/mit-license MIT
- * @since       2007-03-30
  * @version     1.0.2
  */
 

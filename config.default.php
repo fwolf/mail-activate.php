@@ -2,10 +2,8 @@
 /**
  * Default configure file
  *
- * @copyright   Copyright 2014 Fwolf
- * @author      Fwolf <fwolf.aide+gist@gmail.com>
+ * @copyright   Copyright 2014-2015 Fwolf
  * @license     http://opensource.org/licenses/mit-license MIT
- * @since       2014-01-22
  */
 
 use Fwlib\Base\ClassLoader;
