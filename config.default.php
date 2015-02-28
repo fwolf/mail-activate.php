@@ -23,14 +23,10 @@ if ('config.default.php' == basename(__FILE__)) {
 
 
     // Load user config if exists
-    // If use as git submodule, commonly this is put in vendor/ directory,
-    // will try to load config of parent repository.
-    if (file_exists(__DIR__ . '/../../config.php')) {
-        require __DIR__ . '/../../config.php';
-    } elseif (file_exists(__DIR__ . '/config.php')) {
-        require __DIR__ . '/config.php';
+    if (file_exists($pathToRoot . 'config.php')) {
+        /** @noinspection PhpIncludeInspection */
+        require $pathToRoot . 'config.php';
     }
-    $userConfig = $config;
 }
 
 

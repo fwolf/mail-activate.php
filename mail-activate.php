@@ -8,10 +8,10 @@
  * @version     1.0.2
  */
 
-use Fwlib\Bridge\PHPMailer;
 use Fwlib\Config\GlobalConfig;
+use Fwolf\Wrapper\PHPMailer\PHPMailer;
 
-require __DIR__ . '/config.default.php';
+require __DIR__ . '/bootstrap.php';
 
 
 $globalConfig = GlobalConfig::getInstance();
