@@ -5,7 +5,7 @@
  *
  * @copyright   Copyright 2007-2015 Fwolf
  * @license     http://opensource.org/licenses/mit-license MIT
- * @version     1.0.2
+ * @version     1.1
  */
 
 use Fwlib\Config\GlobalConfig;
